@@ -57,6 +57,20 @@ Raw corpus (20k posts)
   Lookup: O(N/K) — routes to dominant cluster partition(s) only
   Eviction: LRU + TTL hybrid
   Threshold τ: tunable at runtime via POST /cache/threshold
+
+
+SemanticCache
+│
+├── _partitions: Dict[int, List[CacheEntry]]
+│   ├── cluster 0: [CacheEntry, CacheEntry, ...]
+│   ├── cluster 3: [CacheEntry, CacheEntry, ...]   ← sci.space queries live here
+│   ├── cluster 7: [CacheEntry, ...]               ← sports queries live here
+│   └── ...
+│
+└── _lru: OrderedDict[query_string → CacheEntry]
+    ├── "Tell me about NASA..."     ← least recently used (front)
+    ├── "Windows PC crashing..."
+    └── "Baseball standings..."     ← most recently used (end)
 ```
 
 ---
