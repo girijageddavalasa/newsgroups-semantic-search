@@ -72,6 +72,12 @@ SemanticCache
     ├── "Windows PC crashing..."
     └── "Baseball standings..."     ← most recently used (end)
 ```
+## What happend to Cache
+```
+On every uvicorn shutdown → cache.persist() saves to disk.
+On every uvicorn startup → cache.load() restores from disk.
+So the cache survives restarts — it is a warm cache.
+```
 
 ---
 
