@@ -72,12 +72,58 @@ SemanticCache
     ├── "Windows PC crashing..."
     └── "Baseball standings..."     ← most recently used (end)
 ```
-## What happend to Cache
+## What happened to Cache
 ```
 On every uvicorn shutdown → cache.persist() saves to disk.
 On every uvicorn startup → cache.load() restores from disk.
 So the cache survives restarts — it is a warm cache.
 ```
+
+## how a query goes through the cache
+
+```
+User sends POST /query
+        │
+        ▼
+embed_text(query)  →  384-d float32 vector, L2-normalised
+        │
+        ▼
+get_query_membership(vec)  →  (K,) probability vector via UMAP + FCM
+  e.g. [0.0, 0.0, 0.0, 0.94, 0.0, ...]  ← cluster 3 = sci.space
+        │
+        ▼
+get_dominant_clusters(membership)  →  [3]   (or [1, 3] for cross-topic)
+        │
+        ▼
+cache.lookup(vec, membership)
+  → search ONLY _partitions[3]              ← skip all other 9 partitions
+  → for each entry:
+      ├── CHECK TTL: time.now - entry.timestamp > 3600s? → skip (expired)
+      └── dot(query_vec, entry.embedding)   ← cosine sim (L2-normalised = dot product)
+  → if best_similarity >= τ (0.92):         CACHE HIT  → return immediately
+  → else:                                   CACHE MISS → continue
+        │
+    HIT ←┘                         MISS
+    │                                │
+    move_to_end() in LRU             ▼
+    update last_accessed       search usearch index (HNSW algorithm)
+    increment access_count           │        O(log N) approximate nearest neighbour
+    return cached result             ▼
+                               fetch top-K doc_ids from SQLite
+                                     │
+                                     ▼
+                               cache.store(query, vec, result, membership)
+                               → add to _partitions[3]
+                               → add to _lru OrderedDict (move_to_end)
+                               → if len(_lru) > 1000:
+                                     popitem(last=False)  ← evict LRU entry
+                                     remove from partition too
+                                     │
+                                     ▼
+                               return result
+```
+
+### HNSW Stands for Hierarchical Navigable Small World graph
 
 ---
 
