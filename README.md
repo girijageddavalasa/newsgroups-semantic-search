@@ -234,7 +234,7 @@ venv\Scripts\activate            # Windows
 pip install -r requirements.txt
 
 # Place 20_newsgroups.tar.gz in data/ folder
-# Download from: https://archive.uci.edu/dataset/113/twenty+newsgroups
+# Download from: https://archive.ics.uci.edu/dataset/113/twenty+newsgroups
 
 # Run setup scripts (one time only — ~45 min total on CPU)
 python scripts/01_ingest_corpus.py --tar data/20_newsgroups.tar.gz   # ~10 min
