@@ -1,0 +1,27 @@
+# ── Core ML ────────────────────────────────────────────────────────────────────
+sentence-transformers>=3.0.0
+torch>=2.0.0
+
+# ── Vector Store ───────────────────────────────────────────────────────────────
+# NOTE: hnswlib has no pre-built wheel for Python 3.13 on Windows.
+# We use usearch instead — pre-built wheels for all Python versions,
+# same HNSW algorithm, same O(log N) performance, zero compilation.
+usearch>=2.9.0
+
+# ── Dimensionality Reduction + Clustering ─────────────────────────────────────
+umap-learn>=0.5.6
+numpy>=1.24.0
+scipy>=1.11.0
+
+# ── Visualisation ─────────────────────────────────────────────────────────────
+matplotlib>=3.7.0
+
+# ── API ────────────────────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.1
+
+# ── Utilities ──────────────────────────────────────────────────────────────────
+tqdm>=4.66.0
+python-multipart>=0.0.9
+joblib>=1.3.0

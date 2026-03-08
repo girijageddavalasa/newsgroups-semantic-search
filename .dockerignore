@@ -1,0 +1,26 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+notebooks/
+
+# Raw dataset — already processed into corpus.db
+data/20_newsgroups/
+data/20_newsgroups.tar.gz
+data/mini_newsgroups.tar.gz
+
+# NEVER copy these from host — they are Python-version-specific
+# and will crash in the Python 3.11 container if saved on Python 3.13
+# They are regenerated inside the container by 03_build_clusters.py
+data/umap_model.pkl
+data/fcm_model.pkl
+data/umap_reduced.npy
+data/cluster_analysis.json
+
+# Cache — starts fresh in container
+cache/semantic_cache.pkl
+
+# Results — regenerated inside container
+results/

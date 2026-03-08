@@ -1,0 +1,59 @@
+version: "3.9"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# docker-compose.yml — 20 Newsgroups Semantic Search
+#
+# Pull and run (RECOMMENDED for reviewers):
+#   docker pull girijageddavalasa/newsgroups-search-trademarkia
+#   docker run -p 8000:8000 girijageddavalasa/newsgroups-search-trademarkia
+#
+# Build from source (requires running setup scripts first):
+#   docker-compose up --build
+#
+# API: http://localhost:8000/docs
+# ═══════════════════════════════════════════════════════════════════════════════
+
+services:
+  semantic-search:
+    image: girijageddavalasa/newsgroups-search-trademarkia:latest
+    container_name: newsgroups-search-trademarkia
+    ports:
+      - "8000:8000"
+
+    # Cache persists between container restarts
+    volumes:
+      - ./cache:/app/cache
+
+    environment:
+      # ── Similarity threshold τ ────────────────────────────────────────────
+      # The key tunable parameter. Controls what counts as a "cache hit".
+      # Higher = more precise, lower hit rate
+      # Lower  = more hits, may return loosely related cached results
+      # Tune via: POST /cache/threshold  (no restart needed)
+      # Analyze: POST /cache/analyze     (sweep τ and show tradeoffs)
+      CACHE_THRESHOLD: "0.92"
+      CACHE_MAX_SIZE: "1000"
+      CACHE_TTL: "3600"
+
+      # ── Data paths ─────────────────────────────────────────────────────────
+      DB_PATH:    "data/corpus.db"
+      HNSW_PATH:  "data/hnsw_index.bin"
+      UMAP_PATH:  "data/umap_model.pkl"
+      FCM_PATH:   "data/fcm_model.pkl"
+      CACHE_PATH: "cache/semantic_cache.pkl"
+      EMBED_MODEL: "all-MiniLM-L6-v2"
+
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s

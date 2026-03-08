@@ -1,0 +1,247 @@
+{
+  "clusters": [
+    {
+      "id": 0,
+      "doc_count": 877,
+      "avg_certainty": 0.928,
+      "boundary_count": 1,
+      "top_newsgroups": [
+        {
+          "newsgroup": "talk.politics.mideast",
+          "count": 718
+        },
+        {
+          "newsgroup": "alt.atheism",
+          "count": 86
+        },
+        {
+          "newsgroup": "talk.politics.misc",
+          "count": 21
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "doc_count": 1092,
+      "avg_certainty": 0.83,
+      "boundary_count": 16,
+      "top_newsgroups": [
+        {
+          "newsgroup": "sci.electronics",
+          "count": 433
+        },
+        {
+          "newsgroup": "misc.forsale",
+          "count": 381
+        },
+        {
+          "newsgroup": "comp.sys.mac.hardware",
+          "count": 66
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "doc_count": 1406,
+      "avg_certainty": 0.948,
+      "boundary_count": 4,
+      "top_newsgroups": [
+        {
+          "newsgroup": "rec.motorcycles",
+          "count": 633
+        },
+        {
+          "newsgroup": "rec.autos",
+          "count": 629
+        },
+        {
+          "newsgroup": "sci.electronics",
+          "count": 55
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "doc_count": 1693,
+      "avg_certainty": 0.88,
+      "boundary_count": 17,
+      "top_newsgroups": [
+        {
+          "newsgroup": "comp.windows.x",
+          "count": 668
+        },
+        {
+          "newsgroup": "comp.graphics",
+          "count": 494
+        },
+        {
+          "newsgroup": "comp.os.ms-windows.misc",
+          "count": 319
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "doc_count": 644,
+      "avg_certainty": 0.963,
+      "boundary_count": 1,
+      "top_newsgroups": [
+        {
+          "newsgroup": "sci.crypt",
+          "count": 589
+        },
+        {
+          "newsgroup": "talk.politics.guns",
+          "count": 11
+        },
+        {
+          "newsgroup": "misc.forsale",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "doc_count": 1559,
+      "avg_certainty": 0.898,
+      "boundary_count": 5,
+      "top_newsgroups": [
+        {
+          "newsgroup": "soc.religion.christian",
+          "count": 781
+        },
+        {
+          "newsgroup": "alt.atheism",
+          "count": 389
+        },
+        {
+          "newsgroup": "talk.religion.misc",
+          "count": 302
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "doc_count": 1963,
+      "avg_certainty": 0.872,
+      "boundary_count": 5,
+      "top_newsgroups": [
+        {
+          "newsgroup": "comp.sys.ibm.pc.hardware",
+          "count": 685
+        },
+        {
+          "newsgroup": "comp.sys.mac.hardware",
+          "count": 559
+        },
+        {
+          "newsgroup": "comp.os.ms-windows.misc",
+          "count": 316
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "doc_count": 694,
+      "avg_certainty": 0.71,
+      "boundary_count": 56,
+      "top_newsgroups": [
+        {
+          "newsgroup": "talk.politics.misc",
+          "count": 240
+        },
+        {
+          "newsgroup": "alt.atheism",
+          "count": 196
+        },
+        {
+          "newsgroup": "sci.med",
+          "count": 80
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "doc_count": 1365,
+      "avg_certainty": 0.999,
+      "boundary_count": 0,
+      "top_newsgroups": [
+        {
+          "newsgroup": "rec.sport.hockey",
+          "count": 713
+        },
+        {
+          "newsgroup": "rec.sport.baseball",
+          "count": 636
+        },
+        {
+          "newsgroup": "misc.forsale",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "doc_count": 650,
+      "avg_certainty": 0.99,
+      "boundary_count": 0,
+      "top_newsgroups": [
+        {
+          "newsgroup": "sci.med",
+          "count": 614
+        },
+        {
+          "newsgroup": "sci.space",
+          "count": 11
+        },
+        {
+          "newsgroup": "talk.politics.misc",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "doc_count": 837,
+      "avg_certainty": 0.91,
+      "boundary_count": 10,
+      "top_newsgroups": [
+        {
+          "newsgroup": "sci.space",
+          "count": 628
+        },
+        {
+          "newsgroup": "comp.graphics",
+          "count": 39
+        },
+        {
+          "newsgroup": "sci.electronics",
+          "count": 32
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "doc_count": 1484,
+      "avg_certainty": 0.874,
+      "boundary_count": 23,
+      "top_newsgroups": [
+        {
+          "newsgroup": "talk.politics.guns",
+          "count": 690
+        },
+        {
+          "newsgroup": "talk.politics.misc",
+          "count": 372
+        },
+        {
+          "newsgroup": "sci.crypt",
+          "count": 77
+        }
+      ]
+    }
+  ],
+  "boundary_fraction": 0.01,
+  "K": 12,
+  "total_boundary_docs": 138
+}

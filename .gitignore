@@ -1,0 +1,24 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data artifacts — use Git LFS or rebuild locally
+data/corpus.db
+data/embeddings.npy
+data/hnsw_index.bin
+data/doc_ids.npy
+data/umap_model.pkl
+data/fcm_model.pkl
+data/umap_reduced.npy
+data/20_newsgroups/
+data/20_newsgroups.tar.gz
+data/mini_newsgroups.tar.gz
+
+# Cache
+cache/semantic_cache.pkl
+
+# Keep placeholder files so directories exist in git
+!data/.gitkeep
+!cache/.gitkeep
+!results/.gitkeep

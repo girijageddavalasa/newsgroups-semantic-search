@@ -1,0 +1,31 @@
+{
+  "total_scanned": 19997,
+  "kept": 14264,
+  "dropped_short": 5221,
+  "dropped_non_english": 0,
+  "dropped_duplicate": 512,
+  "dropped_empty": 0,
+  "noise_pct": 0.478,
+  "per_newsgroup": {
+    "alt.atheism": 775,
+    "comp.graphics": 691,
+    "comp.os.ms-windows.misc": 679,
+    "comp.sys.ibm.pc.hardware": 747,
+    "comp.sys.mac.hardware": 703,
+    "comp.windows.x": 711,
+    "misc.forsale": 578,
+    "rec.autos": 702,
+    "rec.motorcycles": 690,
+    "rec.sport.baseball": 665,
+    "rec.sport.hockey": 737,
+    "sci.crypt": 772,
+    "sci.electronics": 731,
+    "sci.med": 754,
+    "sci.space": 763,
+    "soc.religion.christian": 874,
+    "talk.politics.guns": 753,
+    "talk.politics.mideast": 793,
+    "talk.politics.misc": 687,
+    "talk.religion.misc": 459
+  }
+}
