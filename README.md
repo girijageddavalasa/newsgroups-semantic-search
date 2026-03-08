@@ -270,6 +270,9 @@ Request 1  → embed → search → respond (200ms)
 Request 2  → embed → search → respond (200ms)
 Request 3  → embed → search → respond (200ms)
 ```
+The lifespan context manager ensures all heavy objects load once at startup and are shared across every request, and that the cache is saved to disk on every shutdown — making the service fast from request 1 and resilient to restarts.
+
+---
 ## API Reference
 
 ### Required endpoints
