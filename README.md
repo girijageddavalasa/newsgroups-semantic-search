@@ -1,17 +1,19 @@
 # 20 Newsgroups Semantic Search
 
-Semantic search over ~16,000 newsgroup posts with fuzzy clustering and a cluster-partitioned semantic cache — built for the Trademarkia AI/ML Engineer assignment.
+Semantic search over ~20,000 newsgroup posts with fuzzy clustering and a cluster-partitioned semantic cache — built for the Trademarkia AI/ML Engineer assignment.
 
 ---
 
 ## Quickstart (Docker — zero setup)
 
+
+
 ```bash
 docker pull girijageddavalasa/newsgroups-search-trademarkia
 docker run -p 8000:8000 girijageddavalasa/newsgroups-search-trademarkia
 ```
-
-Open **http://localhost:8000/docs** — full interactive API, ready immediately.
+remember to run these both docker commands and Open **http://localhost:8000/docs** — full interactive API, ready immediately.
+! important its not **http://localhost:8000** it is **http://localhost:8000/docs**
 
 ---
 
