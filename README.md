@@ -229,7 +229,47 @@ The **cluster-partitioned dict** `{cluster_id: [CacheEntry]}` is the direct answ
 4. The result from the first query is returned for the second — zero re-embedding of corpus documents, zero vector search
 
 ---
+## What is the Lifespan Context Manager?
 
+Without it, every single request would do this:
+
+```
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # ── STARTUP ──────────────────────────────
+    init_db()
+    load_index()        # loads usearch index into RAM
+    load_models()       # loads UMAP + FCM into RAM
+    cache.load()        # loads cache from disk (warm restart)
+
+    yield               # ← service runs here, handling all requests
+
+    # ── SHUTDOWN ─────────────────────────────
+    cache.persist()     # saves cache to cache/semantic_cache.pkl
+
+```
+
+
+The `yield` splits it into two halves — everything before runs at startup, everything after runs at shutdown.
+
+---
+
+## Why Is It Needed — The Real Problem It Solves
+
+Without it, every single request would do this:
+```
+Request 1 → load 90MB embedding model → embed → search → respond (30 seconds)
+Request 2 → load 90MB embedding model → embed → search → respond (30 seconds)
+Request 3 → load 90MB embedding model → embed → search → respond (30 seconds)
+```
+
+With lifespan, the models load **once** into RAM at startup, then every request reuses the same in-memory objects:
+```
+Startup    → load 90MB embedding model (once, 8 seconds)
+Request 1  → embed → search → respond (200ms)
+Request 2  → embed → search → respond (200ms)
+Request 3  → embed → search → respond (200ms)
+```
 ## API Reference
 
 ### Required endpoints
